@@ -3,65 +3,59 @@
         <div>
             <h1>¡Cree una nueva rutina!</h1>
         </div>
-        <div>
+        <form [formGroup]="rtn" (ngSubmit)="Agregar_rutina()">
             <mat-form-field class="example-form">
                 <mat-label> Rutina </mat-label>
-                <mat-select #mode value="side">
-                    <mat-option *ngFor="let item of Rutinas" [value]="item">{{item}}</mat-option>
-                </mat-select>
+                <mat-select #mode value="side" formControlName="rutina">
+                    <mat-option *ngFor="let item of Rutinas" [value]="item" >{{item}}</mat-option>
+            </mat-select>
             </mat-form-field>
             <mat-form-field class="example-form">
                 <mat-label>Semanas</mat-label>
-                <input matInput placeholder="Ex. 5 semanas">
+                <input matInput autocomplete="off" placeholder="Ex. 5 semanas" formControlName="semana">
             </mat-form-field>
-        </div>
-        <div>
-            <section class="example-section">
+            <mat-form-field class="example-form">
                 <mat-label>Eliga los dias:</mat-label> 
-                <div class="checkbox-container">    
-                <mat-checkbox class="checkbox-column"  *ngFor="let val of Dias_S">{{val}}</mat-checkbox>
-                </div>
-            </section>
-        </div>
-        <div>
-            <mat-radio-group aria-label="Select an option" class="example-form">
+                <mat-select #mode value="side" formControlName="dia">
+                    <mat-option *ngFor="let item of Dias_S" [value]="item" >{{item}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="example-form">
                 <mat-label>Horas: </mat-label>
-                <mat-radio-button *ngFor="let item of horasDC">{{item}}</mat-radio-button>
-            </mat-radio-group>
-        </div>
-        <div class="Button_form">
-            <button mat-raised-button>Aceptar</button>
-            <button mat-raised-button>Cancelar</button>
-        </div>
+                <mat-select #mode value="side" formControlName="hora">
+                    <mat-option *ngFor="let item of horasDC" [value]="item" >{{item}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="Button_form">
+                <button mat-raised-button type="submit">Aceptar</button>
+                <button mat-raised-button type="reset">Cancelar</button>
+            </div>
+        </form>
     </div>
     <div class="TABLA_RUTINA ">
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-
-            <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
-        
-            <!-- Position Column -->
-            <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef> No. </th>
-            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z5">
+            <!-- Rutina Column -->
+            <ng-container matColumnDef="Rutina">
+            <th mat-header-cell *matHeaderCellDef> Rutina </th>
+            <td mat-cell *matCellDef="let element"> {{element.Rutina}} </td>
             </ng-container>
         
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            <!-- Semanas Column -->
+            <ng-container matColumnDef="Semanas">
+            <th mat-header-cell *matHeaderCellDef> Semanas </th>
+            <td mat-cell *matCellDef="let element"> {{element.Semana}} </td>
             </ng-container>
         
-            <!-- Weight Column -->
-            <ng-container matColumnDef="weight">
-            <th mat-header-cell *matHeaderCellDef> Weight </th>
-            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            <!-- Dias Column -->
+            <ng-container matColumnDef="Dias">
+            <th mat-header-cell *matHeaderCellDef> Dias </th>
+            <td mat-cell *matCellDef="let element"> {{element.Dia}} </td>
             </ng-container>
         
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="symbol">
-            <th mat-header-cell *matHeaderCellDef> Symbol </th>
-            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            <!-- Horas Column -->
+            <ng-container matColumnDef="Horas">
+            <th mat-header-cell *matHeaderCellDef> Horas/Duracion de rutina </th>
+            <td mat-cell *matCellDef="let element"> {{element.Hora}} </td>
             </ng-container>
         
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

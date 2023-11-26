@@ -1,0 +1,23 @@
+.ContenedorS {
+    display: flex;
+}
+
+.Reproductor {
+    margin-left: 100px;
+    margin-top: 40px;
+}
+
+.Sugerencias-lista {
+    margin-left: 18%;
+}
+
+.Sugerencias-lista2 {
+    margin-left: 1%;
+}
+
+h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: bold;
+}
+

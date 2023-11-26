@@ -30,6 +30,7 @@ import { CreacionRutinasComponent } from './Rutinas/creacion-rutinas/creacion-ru
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { SugerenciasComponent } from './Rutinas/sugerencias/sugerencias.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     NewUserComponent,
     EditUserComponent,
     RutinasMultimediaComponent,
-    CreacionRutinasComponent
+    CreacionRutinasComponent,
+    SugerenciasComponent
   ],
   imports: [
     BrowserModule,

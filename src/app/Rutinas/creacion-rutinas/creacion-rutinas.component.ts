@@ -1,24 +1,5 @@
 import { Component } from '@angular/core';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-creacion-rutinas',
@@ -27,12 +8,38 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class CreacionRutinasComponent {
-
-
   Rutinas: any[] = ['bipceps', 'Torso/Piernas', 'Push'];
   horasDC: any[] = ['0:30/Min', '1:00/h', '1:30/h'];
-  Dias_S: any[] = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'];
+  Dias_S: any[] = ['Lunes-Martes-Miercoles', 'Martes-Jueves-Sabados', 'Lunes-Miercoles-Viernes']
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  rtn = new FormGroup({
+    rutina: new FormControl('', Validators.required),
+    semana: new FormControl('', Validators.required),
+    hora: new FormControl('', Validators.required),
+    dia: new FormControl('', Validators.required)
+  });
+  
+  constructor(private formb: FormBuilder){}
+
+  displayedColumns: string[] = ['Rutina', 'Semanas', 'Dias', 'Horas'];
+  dataSource: any[]=[{Rutina: 'Torso/Piernas', Semana: '4', Dia: 'Lunes-Martes-Miercoles', Hora: '0:30/Min'}];
+  
+  Agregar_rutina(){
+    if (this.rtn.valid) {
+      const nuevaRutina = {
+        Rutina: this.rtn.value.rutina,
+        Semana: this.rtn.value.semana,
+        Dia: this.rtn.value.dia,
+        Hora: this.rtn.value.hora
+      };
+      console.log(nuevaRutina);
+
+      // Agregar la nueva rutina al array dataSource
+      this.dataSource.push(nuevaRutina);
+      this.dataSource = [...this.dataSource];
+
+      // Limpiar el formulario después de agregar la rutina
+      this.rtn.reset();
+    }
+  }
 }

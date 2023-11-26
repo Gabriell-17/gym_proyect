@@ -1,12 +1,14 @@
 .contenedor_rutina {
     display: flex;
+    justify-content: space-around;
 }
 
-.TABLA_RUTINA {
-    margin-left: 30%;
+table {
+    width: 120%;
+    margin-top: 5%;
 }
 
-h1 {
+.formulario h1 {
     margin: 3%;
     text-align: center;
 }
@@ -49,8 +51,4 @@ mat-checkbox {
     margin-left: 40px;
     color: black;
     background-color: darksalmon;
-}
-
-.demo-table {
-    width: 20%;
 }

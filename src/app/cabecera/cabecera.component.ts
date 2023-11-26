@@ -44,4 +44,8 @@ export class CabeceraComponent implements OnInit{
   openNuevaRutina() {
     this.router.navigate(['/Rutina-Nueva']);
   }
+
+  openSugerenciasRutina(){
+    this.router.navigate(['/Rutina-Sugerencias'])
+  }
 }
