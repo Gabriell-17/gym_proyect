@@ -22,16 +22,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
+import { MatSelectModule } from '@angular/material/select';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import { RutinasMultimediaComponent } from './rutinas-multimedia/rutinas-multimedia.component';
-import {MatTabsModule} from '@angular/material/tabs';
-import { FormsModule } from '@angular/forms';
-import { CreacionRutinasComponent } from './Rutinas/creacion-rutinas/creacion-rutinas.component';
-
-import {MatSelectModule} from '@angular/material/select';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import { SugerenciasComponent } from './Rutinas/sugerencias/sugerencias.component';
-
 
 @NgModule({
   declarations: [
@@ -42,9 +35,7 @@ import { SugerenciasComponent } from './Rutinas/sugerencias/sugerencias.componen
     PaginaPrincipalComponent,
     NewUserComponent,
     EditUserComponent,
-    RutinasMultimediaComponent,
-    CreacionRutinasComponent,
-    SugerenciasComponent
+    RutinasMultimediaComponent
   ],
   imports: [
     BrowserModule,
@@ -61,11 +52,8 @@ import { SugerenciasComponent } from './Rutinas/sugerencias/sugerencias.componen
     MatTableModule,
     MatTooltipModule,
     MatDialogModule,
-    MatTabsModule,
-    FormsModule,
     MatSelectModule,
-    MatRadioModule,
-    MatCheckboxModule
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
